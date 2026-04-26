@@ -105,7 +105,7 @@ B) The call to this(5) must be the first statement in the constructor.
 C) There is no error; the code is correct.
 D) The constructor should not print any statements.
 
-**Answer: B**
+**Answer: C**
 
 ---
 
@@ -177,7 +177,7 @@ B) 5 and 10
 C) 10 and 10
 D) 5 and 5
 
-**Answer: C**
+**Answer: A**
 
 ---
 
