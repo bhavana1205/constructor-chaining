@@ -1,424 +1,244 @@
+/*
 # Constructor Chaining Assignment
+*/
 
----
-
-## 2. Examine the code below. What does the super() call in the subclass constructor ensure?
-
+// 2. Examine the code below. What does the super() call in the subclass constructor ensure?
 class Parent {
-
-Parent() {
+    Parent() {
+        System.out.println("Parent Constructor");
+    }
 }
-
-}
-
-System.out.println("Parent Constructor");
 
 class Child extends Parent {
-
-Child() {
-
-super();
-
-System.out.println("Child Constructor");
-
+    Child() {
+        super();
+        System.out.println("Child Constructor");
+    }
 }
+// A) It initializes the Child class's own fields.
+// B) It invokes a method of the Parent class.
+// C) It calls the Parent class's no-argument constructor before executing the Child's constructor body.
+// D) It delays initialization until later in the Child constructor.
+// Answer: C
 
-}
-
-A) It initializes the Child class's own fields.
-
-B) It invokes a method of the Parent class.
-
-C) It calls the Parent class's no-argument constructor before executing the Child's constructor body.
-
-D) It delays initialization until later in the Child constructor.
-
-Answer : C
-
-
----
-
-## 3. Consider the following multi-level constructor chaining example. What is the correct order of constructor calls?
-
+// 3. Consider the following multi-level constructor chaining example. What is the correct order of constructor calls?
 class A {
-
-A() { System.out.println("A"); }
-
+    A() { System.out.println("A"); }
 }
 
 class B extends A {
-
-B() {
-
-super();
-
-System.out.println("B");
-
-}
-
+    B() {
+        super();
+        System.out.println("B");
+    }
 }
 
 class C extends B {
-
-C() {                  super();
-
-System.out.println("C")
+    C() {                  
+        super();
+        System.out.println("C");
+    }
 }
-}
+// A) A, C, B
+// B) B, A, C
+// C) A, B, C
+// D) C, B, A
+// Answer: C
 
-A) A, C, B
-
-B) B, A, C
-
-C) A, B, C
-
-D) C, B, A
-
-Answer : C
-
----
-
-## 4. Identify the error in the following code snippet regarding constructor chaining :
-
-```java
+// 4. Identify the error in the following code snippet regarding constructor chaining :
 public class ErrorExample {
-
     public ErrorExample() {
-
         this(5);
-
         System.out.println("Default Constructor");
-
     }
-
     public ErrorExample(int x) {
-
         System.out.println("Parameterized Constructor: " + x);
-
     }
-
 }
-```
+// A) this(5) should be replaced with super(5)
+// B) The call to this(5) must be the first statement in the constructor.
+// C) There is no error; the code is correct.
+// D) The constructor should not print any statements.
+// Answer: C
 
-A) this(5) should be replaced with super(5)
-B) The call to this(5) must be the first statement in the constructor.
-C) There is no error; the code is correct.
-D) The constructor should not print any statements.
-
-**Answer: C**
-
----
-
-## 5. Review the following code and select the option that best describes its output when creating a new instance of Demo:
-
-```java
+// 5. Review the following code and select the option that best describes its output when creating a new instance of Demo:
 public class Demo {
-
     public Demo() {
-
         this(100);
-
         System.out.println("Default Constructor");
-
     }
-
     public Demo(int num) {
-
         System.out.println("Parameterized Constructor: " + num);
-
     }
-
     public static void main(String[] args) {
-
         new Demo();
-
     }
-
 }
-```
+// A) Only "Parameterized Constructor: 100" is printed.
+// B) "Default Constructor" is printed before "Parameterized Constructor: 100".
+// C) "Parameterized Constructor: 100" is printed first, then "Default Constructor".
+// D) The program throws a runtime exception.
+// Answer: C
 
-A) Only "Parameterized Constructor: 100" is printed.
-B) "Default Constructor" is printed before "Parameterized Constructor: 100".
-C) "Parameterized Constructor: 100" is printed first, then "Default Constructor".
-D) The program throws a runtime exception.
-
-**Answer: C**
-
----
-
-## 6. What is the output of the following code snippet?
-
-```java
+// 6. What is the output of the following code snippet?
 class Base {  
     int value = 5;
 }
 
 class Derived extends Base {
-
     int value = 10;
-
     void printValues() {
-
         System.out.println(value);
-
     }
-
     public static void main(String[] args) {
-
         new Derived().printValues();
-
     }
-
 }
-```
+// A) 10 and 5
+// B) 5 and 10
+// C) 10 and 10
+// D) 5 and 5
+// Answer: None of the options match actual output. Code prints only "10".
+// If forced to choose from given options: Closest is A but incorrect because only one value prints.
 
-A) 10 and 5
-B) 5 and 10
-C) 10 and 10
-D) 5 and 5
-
-**Answer: A**
-
----
-
-## 7. In the code snippet below, which statement best describes the use of super.fieldName ?
-
-```java
+// 7. In the code snippet below, which statement best describes the use of super.fieldName ?
 class Animal {
-
     String type = "Animal";
-
 }
 
 class Dog extends Animal {
-
     String type = "Dog";
-
     void displayType() {
-
         System.out.println(type);
         System.out.println(super.type);
-
     }
-
 }
-```
+// A) It accesses the Dog class's own type field.
+// B) It accesses the Animal class's type field, bypassing the subclass's field.
+// C) It causes a compile-time error because of field hiding.
+// D) It initializes both fields to the same value.
+// Answer: B
 
-A) It accesses the Dog class's own type field.
-B) It accesses the Animal class's type field, bypassing the subclass's field.
-C) It causes a compile-time error because of field hiding.
-D) It initializes both fields to the same value.
-
-**Answer: B**
-
----
-
-## 8. What happens when a subclass does not call super() explicitly?
-
-```java
-class Parent {
-
-    Parent() {
-
+// 8. What happens when a subclass does not call super() explicitly?
+class Parent2 {
+    Parent2() {
         System.out.println("Parent");
-
     }
-
 }
 
-class Child extends Parent {
-
-    Child() {
-
+class Child2 extends Parent2 {
+    Child2() {
         System.out.println("Child");
-
     }
-
 }
-```
+// A) The code fails to compile because super() is missing.
+// B) The compiler automatically inserts a call to the no-argument constructor of Parent.
+// C) The Child constructor never executes.
+// D) The program throws a runtime exception.
+// Answer: B
 
-A) The code fails to compile because super() is missing.
-B) The compiler automatically inserts a call to the no-argument constructor of Parent.
-C) The Child constructor never executes.
-D) The program throws a runtime exception.
-
-**Answer: B**
-
----
-
-## 9. Analyze the following code. What is the main difference between this() and super()?
-
-```java
+// 9. Analyze the following code. What is the main difference between this() and super()?
 class Person {
-
     String name;
-
     Person(String name) { this.name = name; }
-
 }
 
 class Employee extends Person {
-
     int id;
-
     Employee(String name, int id) {
-
         super(name);
-
         this.id = id;
-
     }
-
 }
-```
+// A) this() calls parent constructor
+// B) super() calls superclass constructor, this() calls same class constructor
+// C) Both same
+// D) Only for methods
+// Answer: B
 
-A) this() calls parent constructor
-B) super() calls superclass constructor, this() calls same class constructor
-C) Both same
-D) Only for methods
-
-**Answer: B**
-
----
-
-## 10. Examine the following code. What is the role of super()?
-
-```java
-class Employee {
-
-    Employee() {
-
+// 10. Examine the following code. What is the role of super()?
+class Employee2 {
+    Employee2() {
         System.out.println("Employee initialized");
-
     }
-
 }
 
-class Manager extends Employee {
-
+class Manager extends Employee2 {
     Manager() {
-
         super();
-
         System.out.println("Manager initialized");
-
     }
-
 }
-```
+// A) It initializes Manager-specific fields.
+// B) It delays execution.
+// C) It ensures Employee constructor runs first.
+// D) It creates a new object.
+// Answer: C
 
-A) It initializes Manager-specific fields.
-B) It delays execution.
-C) It ensures Employee constructor runs first.
-D) It creates a new object.
-
-**Answer: C**
-
----
-
-## 11. What does constructor chaining help achieve?
-
-```java
+// 11. What does constructor chaining help achieve?
 public class Config {
-
     int mode;
     String setting;
-
     public Config() {
-
         this(1, "Default");
-
     }
-
     public Config(int mode, String setting) {
-
         this.mode = mode;
         this.setting = setting;
-
     }
-
 }
-```
+// A) Faster execution
+// B) Reduces code duplication
+// C) Multiple objects
+// D) Avoids super()
+// Answer: B
 
-A) Faster execution
-B) Reduces code duplication
-C) Multiple objects
-D) Avoids super()
-
-**Answer: B**
-
----
-
-## 12. Which option explains recursion risk?
-
-```java
+// 12. Which option explains recursion risk?
 public class Loop {
-
     public Loop() {
-
         this();
-
     }
-
 }
-```
+// A) Compile-time error
+// B) Runtime infinite recursion
+// C) Valid
+// D) Calls parent
+// Answer: A
 
-A) Compile-time error
-B) Runtime infinite recursion
-C) Valid
-D) Calls parent
+// 13. Concept of constructor chaining
+// A) Independent execution
+// B) Centralized initialization
+// C) Static method
+// D) Override
+// Answer: B
 
-**Answer: A**
-
----
-
-## 13. Concept of constructor chaining
-
-A) Independent execution
-B) Centralized initialization
-C) Static method
-D) Override
-
-**Answer: B**
-
----
-
-## 14. Order of execution
-
-```java
+// 14. Order of execution
 class Grandparent { 
     Grandparent() { System.out.print("G"); }
 }
 
-class Parent extends Grandparent { 
-    Parent() { System.out.print("P"); }
+class Parent3 extends Grandparent { 
+    Parent3() { System.out.print("P"); }
 }
 
-class Child extends Parent { 
-    Child() { System.out.print("C"); }
+class Child3 extends Parent3 { 
+    Child3() { System.out.print("C"); }
 }
 
 public class Test {
     public static void main(String[] args) {
-        new Child();
+        new Child3();
     }
 }
-```
+// A) C, P, G
+// B) G, P, C
+// C) P, G, C
+// D) G, C, P
+// Answer: B
 
-A) C, P, G
-B) G, P, C
-C) P, G, C
-D) G, C, P
-
-**Answer: B**
-
----
-
-## 15. Pitfall of super()
-
-A) Skips subclass initialization
-B) Must be first statement
-C) Calls this()
-D) Static issue
-
-**Answer: B**
+// 15. Pitfall of super()
+// A) Skips subclass initialization
+// B) Must be first statement
+// C) Calls this()
+// D) Static issue
+// Answer: B
