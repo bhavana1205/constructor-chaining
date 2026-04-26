@@ -4,75 +4,77 @@
 
 ## 2. Examine the code below. What does the super() call in the subclass constructor ensure?
 
-```java
 class Parent {
 
-    Parent() { 
-        System.out.println("Parent Constructor");
-    }
+Parent() {
+}
 
 }
+
+System.out.println("Parent Constructor");
 
 class Child extends Parent {
 
-    Child() {
+Child() {
 
-        super();
+super();
 
-        System.out.println("Child Constructor");
-
-    }
+System.out.println("Child Constructor");
 
 }
-```
+
+}
 
 A) It initializes the Child class's own fields.
+
 B) It invokes a method of the Parent class.
+
 C) It calls the Parent class's no-argument constructor before executing the Child's constructor body.
+
 D) It delays initialization until later in the Child constructor.
 
-**Answer: C**
+Answer : C
+
 
 ---
 
 ## 3. Consider the following multi-level constructor chaining example. What is the correct order of constructor calls?
 
-```java
 class A {
 
-    A() { System.out.println("A"); }
+A() { System.out.println("A"); }
 
 }
 
 class B extends A {
 
-    B() {
+B() {
 
-        super();
+super();
 
-        System.out.println("B");
+System.out.println("B");
 
-    }
+}
 
 }
 
 class C extends B {
 
-    C() {                  
-        super();
+C() {                  super();
 
-        System.out.println("C");
-    }
-
+System.out.println("C")
 }
-```
+}
 
 A) A, C, B
+
 B) B, A, C
+
 C) A, B, C
+
 D) C, B, A
 
-**Answer: C**
+Answer : C
 
 ---
 
