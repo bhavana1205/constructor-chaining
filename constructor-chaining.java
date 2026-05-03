@@ -26,10 +26,12 @@ public class Main {
        s.display();
    }
 }
+
 Output:
 Parent Name: John Doe
 Child Name: Alice Smith
 
+   
 16. Calling Parent Method using super
 class Vehicle {
    void describe() {
@@ -49,10 +51,12 @@ public class Main {
        new Car().describe();
    }
 }
+
 Output:
 This is a car
 This is a vehicle
 
+   
 17. Constructor chaining using this()
 class Book {
    Book() {
@@ -70,6 +74,7 @@ class EBook extends Book {
    }
 
    EBook(String title) {
+       super();   
        System.out.println("EBook Title: " + title);
    }
 }
@@ -80,12 +85,11 @@ public class Main {
    }
 }
 
-
-
 Output:
 Default Book Constructor
 EBook Title: Java Programming
 
+   
 18. Using super() in constructor
 class Employee {
    Employee() {
@@ -105,7 +109,7 @@ public class Main {
        new Manager();
    }
 }
+
 Output:
 Employee Created
 Manager Created
-
