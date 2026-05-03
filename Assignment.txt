@@ -1,17 +1,7 @@
 2. Examine the code below. What does the super() call in the subclass constructor ensure?
 
-class Parent {
-Parent() {
-System.out.println("Parent Constructor");
-}
-}
-
-class Child extends Parent {
-Child() {
-super();
-System.out.println("Child Constructor");
-}
-}
+class Parent { Parent() { System.out.println("Parent Constructor"); } }
+class Child extends Parent { Child() { super(); System.out.println("Child Constructor"); } }
 
 A) It initializes the Child class's own fields.
 B) It invokes a method of the Parent class.
@@ -22,23 +12,9 @@ Answer) C
 
 3. Consider the following multi-level constructor chaining example. What is the correct order of constructor calls?
 
-class A {
-A() { System.out.println("A"); }
-}
-
-class B extends A {
-B() {
-super();
-System.out.println("B");
-}
-}
-
-class C extends B {
-C() {
-super();
-System.out.println("C");
-}
-}
+class A { A() { System.out.println("A"); } }
+class B extends A { B() { super(); System.out.println("B"); } }
+class C extends B { C() { super(); System.out.println("C"); } }
 
 A) A, C, B
 B) B, A, C
@@ -49,16 +25,7 @@ Answer) C
 
 4. Identify the error in the following code snippet regarding constructor chaining :
 
-public class ErrorExample {
-public ErrorExample() {
-this(5);
-System.out.println("Default Constructor");
-}
-
-public ErrorExample(int x) {
-System.out.println("Parameterized Constructor: " + x);
-}
-}
+public class ErrorExample { public ErrorExample() { this(5); System.out.println("Default Constructor"); } public ErrorExample(int x) { System.out.println("Parameterized Constructor: " + x); } }
 
 A) this(5) should be replaced with super(5)
 B) The call to this(5) must be the first statement in the constructor.
