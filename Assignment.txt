@@ -1,15 +1,16 @@
 2. Examine the code below. What does the super() call in the subclass constructor ensure?
+
 class Parent {
-    Parent() {
-        System.out.println("Parent Constructor");
-    }
+Parent() {
+System.out.println("Parent Constructor");
+}
 }
 
 class Child extends Parent {
-    Child() {
-        super();
-        System.out.println("Child Constructor");
-    }
+Child() {
+super();
+System.out.println("Child Constructor");
+}
 }
 
 A) It initializes the Child class's own fields.
@@ -20,22 +21,23 @@ D) It delays initialization until later in the Child constructor.
 Answer) C
 
 3. Consider the following multi-level constructor chaining example. What is the correct order of constructor calls?
+
 class A {
-    A() { System.out.println("A"); }
+A() { System.out.println("A"); }
 }
 
 class B extends A {
-    B() {
-        super();
-        System.out.println("B");
-    }
+B() {
+super();
+System.out.println("B");
+}
 }
 
 class C extends B {
-    C() {
-        super();
-        System.out.println("C");
-    }
+C() {
+super();
+System.out.println("C");
+}
 }
 
 A) A, C, B
@@ -45,16 +47,17 @@ D) C, B, A
 
 Answer) C
 
-4. Identify the error in the following code snippet regarding constructor chaining:
-public class ErrorExample {
-    public ErrorExample() {
-        this(5);
-        System.out.println("Default Constructor");
-    }
+4. Identify the error in the following code snippet regarding constructor chaining :
 
-    public ErrorExample(int x) {
-        System.out.println("Parameterized Constructor: " + x);
-    }
+public class ErrorExample {
+public ErrorExample() {
+this(5);
+System.out.println("Default Constructor");
+}
+
+public ErrorExample(int x) {
+System.out.println("Parameterized Constructor: " + x);
+}
 }
 
 A) this(5) should be replaced with super(5)
@@ -63,7 +66,6 @@ C) There is no error; the code is correct.
 D) The constructor should not print any statements.
 
 Answer) C
-
 5. Review the following code and select the option that best describes its output:
 public class Demo {
     public Demo() {
